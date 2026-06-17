@@ -20,6 +20,13 @@ int main(void)
     GPIOD->MODER &= ~(3U << (12U * 2U));
     GPIOD->MODER |=  (1U << (12U * 2U));
 
+    /* Configure PD12 as Push-Pull */
+    GPIOD->OTYPER &= ~(1U << 12);
+
+    /* Configure PD12 output speed as Medium */
+    GPIOD->OSPEEDR &= ~(3U << (12U * 2U));
+    GPIOD->OSPEEDR |=  (1U << (12U * 2U));
+
     while (1)
     {
         if ((GPIOA->IDR & (1U << 0)) != 0)
