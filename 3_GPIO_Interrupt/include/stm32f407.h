@@ -23,6 +23,10 @@
 
 #define RCC_BASE           (AHB1PERIPH_BASE + 0x3800U)
 
+/* APB2 Peripheral Base Addresses */
+#define SYSCFG_BASE        (APB2PERIPH_BASE + 0x3800U)
+#define EXTI_BASE          (APB2PERIPH_BASE + 0x3C00U)
+
 /* GPIO Register Definition Structure */
 typedef struct
 {
@@ -76,5 +80,50 @@ typedef struct
 #define RCC_AHB1ENR_GPIOCEN_Pos    2U
 #define RCC_AHB1ENR_GPIODEN_Pos    3U
 #define RCC_AHB1ENR_GPIOEEN_Pos    4U
+
+/* RCC APB2 Clock Enable Register Bits */
+#define RCC_APB2ENR_SYSCFGEN_Pos  14U
+
+/* SYSCFG Register Definition Structure */
+typedef struct
+{
+    volatile uint32_t MEMRMP;       /* Offset: 0x00 */
+    volatile uint32_t PMC;          /* Offset: 0x04 */
+    volatile uint32_t EXTICR[4];    /* Offset: 0x08, 0x0C, 0x10, 0x14 */
+    uint32_t RESERVED[2];           /* Offset: 0x18, 0x1C */
+    volatile uint32_t CMPCR;        /* Offset: 0x20 */
+} SYSCFG_TypeDef;
+
+/* SYSCFG Pointer */
+#define SYSCFG ((SYSCFG_TypeDef *)SYSCFG_BASE)
+
+/* EXTI Register Definition Structure */
+typedef struct
+{
+    volatile uint32_t IMR;      /* Offset: 0x00 */
+    volatile uint32_t EMR;      /* Offset: 0x04 */
+    volatile uint32_t RTSR;     /* Offset: 0x08 */
+    volatile uint32_t FTSR;     /* Offset: 0x0C */
+    volatile uint32_t SWIER;    /* Offset: 0x10 */
+    volatile uint32_t PR;       /* Offset: 0x14 */
+} EXTI_TypeDef;
+
+/*EXTI Pointer */
+#define EXTI ((EXTI_TypeDef *)EXTI_BASE)
+
+/* NVIC is part of the ARM Cortex-M4 System Control Space */
+#define NVIC_BASE 0xE000E100U
+
+/* NVIC Register Definition Structure */
+typedef struct
+{
+    volatile uint32_t ISER[8];
+} NVIC_TypeDef;
+
+/* NVIC Pointer */
+#define NVIC ((NVIC_TypeDef *)NVIC_BASE)
+
+/* Interrupt Numbers */
+#define EXTI0_IRQn 6U
 
 #endif

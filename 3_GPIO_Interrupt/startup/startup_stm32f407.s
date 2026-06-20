@@ -6,6 +6,7 @@
 .global _estack
 
 .extern main
+.extern EXTI0_IRQHandler
 
 .extern _sidata
 .extern _sdata
@@ -32,6 +33,13 @@
 .word Default_Handler
 .word Default_Handler
 .word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word EXTI0_IRQHandler
 
 .text
 .align 2

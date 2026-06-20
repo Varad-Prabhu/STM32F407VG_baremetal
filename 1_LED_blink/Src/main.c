@@ -2,9 +2,7 @@
 
 void delay(void)
 {
-    for (volatile uint32_t i = 0; i < 1000000; i++)
-    {
-    }
+    for (volatile uint32_t i = 0; i < 1000000; i++);
 }
 
 int main(void)
@@ -17,7 +15,7 @@ int main(void)
     GPIOD->MODER |=  (1U << (12U * 2U));
 
     /* Configure PD12 as Push-Pull */
-    GPIOD->OTYPER &= ~(1U << 12);
+    GPIOD->OTYPER &= ~(1U << 12U);
 
     /* Configure PD12 output speed as Medium */
     GPIOD->OSPEEDR &= ~(3U << (12U * 2U));
@@ -26,7 +24,7 @@ int main(void)
     while (1)
     {
         /* LED ON */
-        GPIOD->BSRR = (1U << 12);
+        GPIOD->BSRR = (1U << 12U);
 
         delay();
 

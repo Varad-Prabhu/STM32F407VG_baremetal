@@ -24,7 +24,6 @@
 #define RCC_BASE           (AHB1PERIPH_BASE + 0x3800U)
 
 /* GPIO Register Definition Structure */
-
 typedef struct
 {
     volatile uint32_t MODER;      /* Offset: 0x00 */
@@ -49,23 +48,23 @@ typedef struct
 /* RCC structure */
 typedef struct
 {
-    volatile uint32_t CR;          // 0x00
-    volatile uint32_t PLLCFGR;     // 0x04
-    volatile uint32_t CFGR;        // 0x08
-    volatile uint32_t CIR;         // 0x0C
-    volatile uint32_t AHB1RSTR;    // 0x10
-    volatile uint32_t AHB2RSTR;    // 0x14
-    volatile uint32_t AHB3RSTR;    // 0x18
-    uint32_t RESERVED0;            // 0x1C
-    volatile uint32_t APB1RSTR;    // 0x20
-    volatile uint32_t APB2RSTR;    // 0x24
-    uint32_t RESERVED1[2];         // 0x28, 0x2C
-    volatile uint32_t AHB1ENR;     // 0x30
-    volatile uint32_t AHB2ENR;     // 0x34
-    volatile uint32_t AHB3ENR;     // 0x38
-    uint32_t RESERVED2;            // 0x3C
-    volatile uint32_t APB1ENR;     // 0x40
-    volatile uint32_t APB2ENR;     // 0x44
+    volatile uint32_t CR;          /* Offset: 0x00 */
+    volatile uint32_t PLLCFGR;     /* Offset: 0x04 */
+    volatile uint32_t CFGR;        /* Offset: 0x08 */
+    volatile uint32_t CIR;         /* Offset: 0x0C */
+    volatile uint32_t AHB1RSTR;    /* Offset: 0x10 */
+    volatile uint32_t AHB2RSTR;    /* Offset: 0x14 */
+    volatile uint32_t AHB3RSTR;    /* Offset: 0x18 */
+    uint32_t RESERVED0;            /* Offset: 0x1C */
+    volatile uint32_t APB1RSTR;    /* Offset: 0x20 */
+    volatile uint32_t APB2RSTR;    /* Offset: 0x24 */
+    uint32_t RESERVED1[2];         /* Offset: 0x28, 0x2C */
+    volatile uint32_t AHB1ENR;     /* Offset: 0x30 */
+    volatile uint32_t AHB2ENR;     /* Offset: 0x34 */
+    volatile uint32_t AHB3ENR;     /* Offset: 0x38 */
+    uint32_t RESERVED2;            /* Offset: 0x3C */
+    volatile uint32_t APB1ENR;     /* Offset: 0x40 */
+    volatile uint32_t APB2ENR;     /* Offset: 0x44 */
 } RCC_TypeDef;
 
 /* RCC Pointer */

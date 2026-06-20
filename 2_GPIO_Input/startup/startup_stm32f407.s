@@ -23,13 +23,13 @@
 .word Default_Handler
 .word Default_Handler
 .word Default_Handler
-.word 0
-.word 0
-.word 0
-.word 0
 .word Default_Handler
 .word Default_Handler
-.word 0
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
+.word Default_Handler
 .word Default_Handler
 .word Default_Handler
 
@@ -81,4 +81,4 @@ Hang:
 Default_Handler:
 
     b Default_Handler
-    
+
