@@ -6,3 +6,9 @@ build/
 *.bin
 *.hex
 *.map
+
+# Dependency files (if generated)
+*.d
+
+# VS Code settings
+.vscode/
