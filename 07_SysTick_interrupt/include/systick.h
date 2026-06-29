@@ -31,6 +31,8 @@ void SysTick_Start(void);
 
 void SysTick_Stop(void);
 
-void SysTick_DelayMs(uint32_t delay);
+uint32_t SysTick_GetTick(void);
+
+void SysTick_Handler(void);
 
 #endif /* SYSTICK_H */
