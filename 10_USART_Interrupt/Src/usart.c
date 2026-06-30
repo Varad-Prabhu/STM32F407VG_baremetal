@@ -18,10 +18,16 @@ void USART2_Init(void)
     RCC->APB1ENR |= (1U << RCC_APB1ENR_USART2EN_Pos);   /* Enable USART2 clock */
 
     USART2->CR1 &= ~(1U << USART_CR1_UE_Pos);       /* Disable USART2 before configuration */
+
     USART2->CR1 &= ~(1U << USART_CR1_M_Pos);        /* 8 data bits */
     USART2->CR1 &= ~(1U << USART_CR1_PCE_Pos);      /* No parity */
     USART2->CR1 &= ~(1U << USART_CR1_OVER8_Pos);    /* Oversampling by 16 */
     
+    USART2->CR1 |= (1U << USART_CR1_RXNEIE_Pos);    /* Enable RXNE interrupt */
+    USART2->CR1 &= ~(1U << USART_CR1_TCIE_Pos);     /* Disable Transmission Complete interrupt */
+    USART2->CR1 &= ~(1U << USART_CR1_TXEIE_Pos);    /* Disable TXE interrupt */
+    USART2->CR1 &= ~(1U << USART_CR1_IDLEIE_Pos);   /* Disable IDLE interrupt */
+
     USART2->CR2 &= ~(3U << USART_CR2_STOP_Pos);     /* 1 stop bit */
 
     USART2->CR3 &= ~(1U << USART_CR3_CTSE_Pos);      /* Disable CTS */
@@ -60,4 +66,15 @@ char USART2_ReadChar(void)
 {
     while (!(USART2->SR & (1U << USART_SR_RXNE_Pos)));      /* Wait until RXNE is set */
     return (char)(USART2->DR & 0xFFU);                      /* Read character from data register */
+}
+
+void USART2_IRQHandler(void)
+{
+    char receivedChar;
+    if (USART2->SR & (1U << USART_SR_RXNE_Pos))         /* Check if RXNE flag is set*/
+    {
+        /* Reading data register clears the RXNE flag */
+        receivedChar = (char)(USART2->DR & 0xFFU);      /* Read received character */
+        USART2_WriteChar(receivedChar);                 /* Echo back the received character */
+    }
 }
