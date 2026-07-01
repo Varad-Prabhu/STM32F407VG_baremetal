@@ -75,6 +75,8 @@ void USART2_IRQHandler(void)
     {
         /* Reading data register clears the RXNE flag */
         receivedChar = (char)(USART2->DR & 0xFFU);      /* Read received character */
+        USART2_WriteString("Received: ");
         USART2_WriteChar(receivedChar);                 /* Echo back the received character */
+        USART2_WriteString("\r\n");
     }
 }
