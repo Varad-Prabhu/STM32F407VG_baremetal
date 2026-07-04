@@ -36,3 +36,14 @@ void SysTick_Stop(void)
     SYSTICK->CTRL &= ~(1U << SYSTICK_CTRL_ENABLE_Pos);      /* Counter disabled */
     SYSTICK->CTRL &= ~(1U << SYSTICK_CTRL_TICKINT_Pos);     /* Disable SysTick interrupt */
 }
+
+void SysTick_DelayMs(uint32_t delay_ms)
+{
+    uint32_t start = SysTick_GetTick();
+
+    while ((SysTick_GetTick() - start) < delay_ms)
+    {
+        /* Wait */
+    }
+}
+

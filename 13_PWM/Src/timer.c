@@ -66,3 +66,21 @@ void TIM2_PWM_Init(uint32_t prescaler, uint32_t period, uint32_t duty_cycle)
     TIM2_Start();                                                       /* Start TIM2 counter */
 }
 
+void TIM2_PWM_Start(void)
+{
+    TIM2->CCER |= (1U << TIM_CCER_CC1E_Pos);                            /* Enable Channel 1 output */
+
+    TIM2_Start();                                                       /* Start timer */
+}
+
+void TIM2_PWM_Stop(void)
+{
+    TIM2->CCER &= ~(1U << TIM_CCER_CC1E_Pos);                           /* Disable output for channel 1 */
+
+    TIM2_Stop();                                                        /* Stop timer */
+}
+
+void TIM2_PWM_SetDutyCycle(uint32_t duty_cycle)
+{
+    TIM2->CCR1 = duty_cycle;                                            /* Set compare value for channel 1 */
+}
