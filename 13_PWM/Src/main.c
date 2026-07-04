@@ -91,6 +91,9 @@ int main(void)
 
     while (1)
     {
+        TIM2_PWM_SetDutyCycle(0);        /* 0% */
+        SysTick_DelayMs(2000);
+
         TIM2_PWM_SetDutyCycle(100);      /* 10% */
         SysTick_DelayMs(2000);
 
@@ -104,6 +107,9 @@ int main(void)
         SysTick_DelayMs(2000);
 
         TIM2_PWM_SetDutyCycle(900);      /* 90% */
+        SysTick_DelayMs(2000);
+
+        TIM2_PWM_SetDutyCycle(1000);     /* 100% */
         SysTick_DelayMs(2000);
     }
 
