@@ -21,7 +21,6 @@ void TIM2_Init(uint32_t prescaler, uint32_t auto_reload)
 void TIM2_Start(void)
 {
     TIM2->CR1 |= (1U << TIM_CR1_CEN_Pos);               /* Enable TIM2 counter */
-
 }
 
 void TIM2_Stop(void)

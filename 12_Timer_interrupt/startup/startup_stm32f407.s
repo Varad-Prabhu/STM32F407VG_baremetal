@@ -7,6 +7,7 @@
 
 .extern main
 .extern SysTick_Handler
+.extern TIM2_IRQHandler
 
 .extern _sidata
 .extern _sdata
