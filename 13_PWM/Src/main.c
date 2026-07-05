@@ -103,25 +103,25 @@ int main(void)
 
     while (1)
     {
-        TIM2_PWM_SetDutyCycle(0);        /* 0% */
+        TIM2_PWM_SetCompareValue(0);        /* 0% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(100);      /* 10% */
+        TIM2_PWM_SetCompareValue(100);      /* 10% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(300);      /* 30% */
+        TIM2_PWM_SetCompareValue(300);      /* 30% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(500);      /* 50% */
+        TIM2_PWM_SetCompareValue(500);      /* 50% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(700);      /* 70% */
+        TIM2_PWM_SetCompareValue(700);      /* 70% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(900);      /* 90% */
+        TIM2_PWM_SetCompareValue(900);      /* 90% */
         SysTick_DelayMs(2000);
 
-        TIM2_PWM_SetDutyCycle(1000);     /* 100% */
+        TIM2_PWM_SetCompareValue(1000);     /* 100% */
         SysTick_DelayMs(2000);
     }
 

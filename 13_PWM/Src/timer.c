@@ -80,7 +80,7 @@ void TIM2_PWM_Stop(void)
     TIM2_Stop();                                                        /* Stop timer */
 }
 
-void TIM2_PWM_SetDutyCycle(uint32_t duty_cycle)
+void TIM2_PWM_SetCompareValue(uint32_t compare_value)
 {
-    TIM2->CCR1 = duty_cycle;                                            /* Set compare value for channel 1 */
+    TIM2->CCR1 = compare_value;                                         /* Set compare value for channel 1 */
 }

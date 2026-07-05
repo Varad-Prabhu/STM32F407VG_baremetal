@@ -11,6 +11,6 @@ void TIM2_DelayMs(uint32_t delay_ms);
 void TIM2_PWM_Init(uint32_t prescaler, uint32_t period, uint32_t duty_cycle);
 void TIM2_PWM_Start(void);
 void TIM2_PWM_Stop(void);
-void TIM2_PWM_SetDutyCycle(uint32_t duty_cycle);
+void TIM2_PWM_SetCompareValue(uint32_t compare_value);
 
 #endif
