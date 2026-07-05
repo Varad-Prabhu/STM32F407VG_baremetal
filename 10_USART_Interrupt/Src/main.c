@@ -68,6 +68,18 @@ int main(void)
     /* System clock configuration */
     SystemClock_Config();
 
+    /*----------------------------------------------------------*/
+    /* Hardware Connections (USART2)                            */
+    /*                                                          */
+    /* STM32F407VG                USB-to-UART Module            */
+    /* ---------------------------------------------------------*/
+    /* PA2 (USART2_TX, AF7) ----> RXD                           */
+    /* PA3 (USART2_RX, AF7) <---- TXD                           */
+    /* GND ---------------------> GND                           */
+    /*                                                          */
+    /* USB-to-UART connected to PC                              */
+    /* Baud Rate : 115200                                       */
+    /*----------------------------------------------------------*/
     GPIO_InitTypeDef GPIO_LED;
 
     GPIO_LED.Port = GPIOD;

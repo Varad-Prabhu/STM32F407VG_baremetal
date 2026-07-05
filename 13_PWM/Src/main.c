@@ -71,6 +71,18 @@ int main(void)
     SysTick_Init(168000);
     SysTick_Start();
 
+    /*----------------------------------------------------------*/
+    /* Hardware Connections (PWM)                               */
+    /*                                                          */
+    /* STM32F407VG                                              */
+    /* ---------------------------------------------------------*/
+    /* PA0 (TIM2_CH1, AF1) ----> 220 Ω Resistor ----> LED Anode */
+    /* LED Cathode -------------> GND                           */
+    /*                                                          */
+    /* PWM Output:                                              */
+    /* Timer : TIM2 Channel 1                                   */
+    /* GPIO  : PA0 (Alternate Function AF1)                     */
+    /*----------------------------------------------------------*/
     GPIO_InitTypeDef GPIO_PWM;
 
     GPIO_PWM.Port = GPIOA;
