@@ -35,7 +35,7 @@ void USART2_Init(void)
 
     /* Configure USART2 BRR */
     /* USARTDIV = pclk1 / (16 * baudrate) */
-    /* Here pck1 = 42 MHz, Baudrate = 115200 */
+    /* Here pclk1 = 42 MHz, Baudrate = 115200 */
     /* USARTDIV = 42000000 / (16 * 115200) = 22.786458 */
     /* DIV_MANTISSA = 22 = 0x16, DIV_FRACTION = 0.786458 * 16 = 12.583328 = 13 = 0xD */
     /* BRR = DIV_MANTISSA << 4 | DIV_FRACTION = 0x16D */
