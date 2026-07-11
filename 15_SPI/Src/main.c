@@ -72,6 +72,15 @@ int main(void)
     uint8_t memory_type;
     uint8_t capacity;
 
+    uint8_t tx_buffer[] =
+    {
+        'S','T','M','3','2',' ',
+        'W','2','5','Q','6','4'
+    };
+
+    uint8_t rx_buffer[sizeof(tx_buffer)];
+    uint8_t pass = 1;
+
     /* System clock configuration */
     SystemClock_Config();
 
@@ -123,8 +132,8 @@ int main(void)
     /* Baud Rate : 115200                                       */
     /*----------------------------------------------------------*/
     USART2_Init();                          /* Initialize USART2 for debugging */
-    SPI1_CS_Deselect();                     /* W25Qxx deselected */
     SPI1_Init();                            /* Initialize SPI1 */
+    SPI1_CS_Deselect();                     /* W25Qxx deselected */
 
     W25Q_ReadJEDECID(&manufacturer, &memory_type, &capacity);
     
@@ -139,6 +148,53 @@ int main(void)
     USART2_SendHex(capacity);
 
     USART2_WriteString("\r\n");
+
+    /* Test 1: Read Status Register 1 */
+    USART2_WriteString("Status Register 1 : 0x");
+    USART2_SendHex(W25Q_ReadStatusRegister1());
+    USART2_WriteString("\r\n");
+
+    /* Test 2: Erase one sector */
+    USART2_WriteString("Erasing Sector...\r\n");
+    W25Q_SectorErase(0x000000);
+    USART2_WriteString("Sector Erase Complete\r\n");
+
+    /* Test 3: Program a page */
+    USART2_WriteString("Programming Page...\r\n");
+    W25Q_PageProgram(0x000000, tx_buffer, sizeof(tx_buffer));
+    USART2_WriteString("Programming Complete\r\n");
+
+    /* Test 4: Read the programmed data */
+    USART2_WriteString("Reading Programmed data...\r\n");
+    W25Q_ReadData(0x000000, rx_buffer, sizeof(rx_buffer));
+    USART2_WriteString("Read Complete\r\n");
+
+    /* Test 5: Print received bytes */
+    USART2_WriteString("Received Data:\r\n");
+    for (uint32_t i = 0; i < sizeof(rx_buffer); i++)
+    {
+        USART2_WriteChar(rx_buffer[i]);
+    }
+    USART2_WriteString("\r\n");
+
+    /* Test 6: Verify received data */
+    USART2_WriteString("Verifying Data...\r\n");
+    for (uint32_t i = 0; i < sizeof(tx_buffer); i++)
+    {
+        if (tx_buffer[i] != rx_buffer[i])
+        {
+            pass = 0;
+            break;
+        }
+    }
+    if (pass)
+    {
+        USART2_WriteString("Flash Test Passed\r\n");
+    }
+    else
+    {
+        USART2_WriteString("Flash Test Failed\r\n");
+    }
 
     while (1)
     {

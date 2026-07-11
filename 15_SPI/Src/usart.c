@@ -64,8 +64,7 @@ char USART2_ReadChar(void)
 
 void USART2_SendHex(uint8_t value)
 {
-    char hex_chars[] = "0123456789ABCDEF";
-
+    static const char hex_chars[] = "0123456789ABCDEF";
     USART2_WriteChar(hex_chars[(value >> 4) & 0x0F]);    /* Send upper nibble */
     USART2_WriteChar(hex_chars[value & 0x0F]);           /* Send lower nibble */
 }
