@@ -106,6 +106,7 @@ int main(void)
 
     SSD1306_SetCursor(4, 0);
     SSD1306_WriteString("I2C OLED");
+    
     while (1)
     {
         /* Main loop */
