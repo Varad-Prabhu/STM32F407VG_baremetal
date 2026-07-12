@@ -107,7 +107,7 @@ int main(void)
         /* Normal operation */
         SysTick_DelayMs(40);                                                /* Delay for 40 ms */
         
-        /* Uncomment ONE of the following instead of the above delay to demonstrate WWDG behavior */
+        /* Uncomment one of the following instead of the above delay to demonstrate WWDG behavior */
 
         // SysTick_DelayMs(20);                                             /* Early refresh -> reset */
         // SysTick_DelayMs(60);                                             /* Late refresh -> reset */
