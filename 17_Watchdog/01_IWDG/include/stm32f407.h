@@ -681,4 +681,9 @@ typedef struct
 /* Maximum reload value */
 #define IWDG_RELOAD_MAX         0x0FFFU
 
+/* RCC watchdog flag */
+#define RCC_CSR_RMVF_Pos        24U
+#define RCC_CSR_IWDGRSTF_Pos    29U
+#define RCC_CSR_WWDGRSTF_Pos    30U
+
 #endif

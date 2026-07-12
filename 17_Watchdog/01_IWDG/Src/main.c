@@ -82,12 +82,12 @@ int main(void)
 
     GPIO_Init(&GPIO_LED);
 
-    if (RCC->CSR & (1U << 29))
+    if (RCC->CSR & (1U << RCC_CSR_IWDGRSTF_Pos))
     {
         /* Previous reset was caused by the Independent Watchdog (IWDG) */
-        GPIO_WritePin(GPIOD, GPIO_PIN_13,GPIO_PIN_SET);                     /* Turn on the LED to indicate that the previous reset was caused by the IWDG */
+        GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);                    /* Turn on the LED to indicate that the previous reset was caused by the IWDG */
     }
-    RCC->CSR |= (1U << 24);                                                 /* Clear the reset flags */
+    RCC->CSR |= (1U << RCC_CSR_RMVF_Pos);                                   /* Clear the reset flags */
 
     /* Assuming LSI clock frequency = 32 kHz */
     /* Watchdog timeout T = (Reload + 1) * Prescaler / LSI clock frequency */
@@ -97,7 +97,7 @@ int main(void)
     while (1)
     {
         GPIO_TogglePin(GPIOD, GPIO_PIN_12);                                 /* Toggle the LED */
-        SysTick_DelayMs(500);                                               /* Delay for 500ms */
+        SysTick_DelayMs(500);                                               /* Delay for 500 ms */
 
         /* Comment out the line below to demonstrate IWDG reset */
         IWDG_Refresh();                                                     /* Refresh watchdog counter */
